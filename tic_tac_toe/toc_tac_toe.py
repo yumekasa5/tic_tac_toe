@@ -58,3 +58,24 @@ def examine_board(i: int, j: int) -> int:
     """盤面i,jの位置の値を返す"""
     return board[i][j]
 
+def set_board(i: int, j: int, t: int) -> str:
+    """盤面のi,jに手番を登録、状態を文字列で返す
+    return 'OK'              #成功
+           'illegal turn'    #手番が正しくない
+           'illegal slot'    #指定された場所が正しくない
+    """
+
+    if(i >= 0) and (i < 3) and (j >= 0) and ( j < 3):
+        if(t > 0) and ( t < 3):
+            if examine_board(i, j) == 0:
+                board[i][j] = t
+                return 'OK'
+            else:
+                return 'Not empty'
+        else:
+            return 'illegal turn'
+    else:
+        return 'illegal slot'
+
+
+        
